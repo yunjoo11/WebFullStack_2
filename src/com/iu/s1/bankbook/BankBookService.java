@@ -14,6 +14,19 @@ public class BankBookService {
 		this.bankBookDAO = bankBookDAO;
 	}
 
+	public ActionForward getSelect(HttpServletRequest request) throws Exception{
+		ActionForward actionForward = new ActionForward();
+		
+		long bookNumber = Long.parseLong(request.getParameter("bookNumber"));
+		
+		BankBookDTO bankBookDTO = bankBookDAO.getSelect(bookNumber);
+		
+		actionForward.setCheck(true);
+		actionForward.setPath("../WEB-INF/bankbook/bankbookSelect.jsp");
+		request.setAttribute("dto", bankBookDTO);
+		
+		return actionForward;
+	}
 
 
 

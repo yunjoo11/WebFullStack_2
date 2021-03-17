@@ -9,10 +9,13 @@ public class BankBookDAOTest {
 
 	public static void main(String[] args) {
 		BankBookDAO bankBookDAO = new BankBookDAO();
-	
+		
 		try {
-			List<BankBookDTO> ar = bankBookDAO.getList();
-			System.out.println(ar.size()==4);
+			BankBookDTO bankBookDTO = bankBookDAO.getSelect(1);
+			System.out.println(bankBookDTO !=null);
+			
+//			List<BankBookDTO> ar = bankBookDAO.getList();
+//			System.out.println(ar.size()==4);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
