@@ -1,10 +1,11 @@
+<%@page import="com.iu.s1.bankbook.BankBookDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8"%>
+    
 <%
-	request.getAttribute("list");
-%>	
-	
+	List<BankBookDTO> ar= (List<BankBookDTO>)request.getAttribute("list");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,10 +22,9 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
-
 <body>
-
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -49,14 +49,33 @@
 			</ul>
 		</div>
 	</nav>
-
-	<div class="container">
-		<h3>Right Aligned Navbar</h3>
-		<p>The .navbar-right class is used to right-align navigation bar
-			buttons.</p>
+	
+<div class="container"> 
+	<div class="row">
+		<h1>BankBook List</h1>
+	
+		<table class="table table-hober">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Rate</th>
+					<th>Sale</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+			<% for(int i=0;i<ar.size();i++) {%>
+				<tr>
+					<td><%=ar.get(i).getBookName() %></td>
+					<td><%=ar.get(i).getBookRate() %></td>
+					<td><%=ar.get(i).getBookSale() %></td>
+				</tr>	
+			<%} %>	
+			</tbody>		
+		</table>
+	
 	</div>
-
-
-
+</div>
+	
 </body>
 </html>
